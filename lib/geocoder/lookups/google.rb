@@ -42,7 +42,7 @@ module Geocoder::Lookup
           Geocoder.log(:warn, "Google Geocoding API error: over query limit.")
       when "REQUEST_DENIED"
         raise_error(Geocoder::RequestDenied) ||
-          Geocoder.log(:warn, "Google Geocoding API error: request denied.")
+          Geocoder.log(:warn, "Google Geocoding API error: request denied. - #{doc['error_message']}")
       when "INVALID_REQUEST"
         raise_error(Geocoder::InvalidRequest) ||
           Geocoder.log(:warn, "Google Geocoding API error: invalid request.")
